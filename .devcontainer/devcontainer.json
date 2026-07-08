@@ -1,0 +1,17 @@
+{
+	"name": "Node.js",
+	
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:4-24-trixie",
+
+	"features": {},	
+	"forwardPorts": [],
+	
+	"postCreateCommand": "echo Tudo pronto!",
+
+	"customizations": {
+		"vscode": {
+			"extensions": [],
+			"settings": {}
+		}
+	}
+}

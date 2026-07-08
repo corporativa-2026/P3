@@ -1,0 +1,16 @@
+{
+    "editor.indentSize": 2,
+    "editor.tabSize": 2,
+    "files.eol": "\n",
+    "editor.insertSpaces": true,
+    "eslint.format.enable": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "files.watcherExclude": {
+        "**/node_modules": true,
+        "**/dist": true
+    },
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [100]
+}

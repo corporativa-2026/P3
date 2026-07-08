@@ -1,0 +1,78 @@
+@host = localhost:8080
+@token = super-secret-token
+
+### Testar o servidor se estás de boas
+GET /health HTTP/1.1
+Host: {{host}}
+Accept: text/plain
+Authorization: Bearer {{token}}
+
+### now BRazil
+GET /now?country=BR HTTP/1.1
+Host: {{host}}
+Accept: text/plain
+Authorization: Bearer {{token}}
+
+### now ITaly
+GET /now?country=IT HTTP/1.1
+Host: {{host}}
+Accept: text/plain
+Authorization: Bearer {{token}}
+
+### now UTC (omit country)
+GET /now HTTP/1.1
+Host: {{host}}
+Accept: text/plain
+Authorization: Bearer {{token}}
+
+### unsupported country
+GET /now?country=ZZ HTTP/1.1
+Host: {{host}}
+Accept: text/plain
+Authorization: Bearer {{token}}
+
+### To whom Brazil lost the world cup, e.g.: Belgium
+GET /cup?year=2018 HTTP/1.1
+Host: {{host}}
+Accept: text/plain
+Authorization: Bearer {{token}}
+
+# Should return "Brazil lost to Belgium in the 2018 World Cup quarter-finals"
+
+
+### To whom Brazil lost the world cup, e.g.: Belgium
+GET /cup?year=2018 HTTP/1.1
+Host: {{host}}
+Accept: application/json
+Authorization: Bearer {{token}}
+
+# Should return {"year": 2018, "result": "lost", "opponent": "Belgium", "stage": "quarter-finals"}
+
+### Should return 400 Bad Request
+GET /cup?year=2002 HTTP/1.1
+Host: {{host}}
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Should return the latest cup if the year is omitted
+GET /cup HTTP/1.1
+Host: {{host}}
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Who did Brazil to win the championship
+GET /cup?year=2002 HTTP/1.1
+Host: {{host}}
+Accept: application/json
+Authorization: Bearer {{token}}
+
+# Should return {"year": 2002, "result": "won", "opponent": "Germany", "stage": "final"}
+
+
+### Who did Brazil to win the championship
+GET /cup?year=2002 HTTP/1.1
+Host: {{host}}
+Accept: text/plain
+Authorization: Bearer {{token}}
+
+# The response format in text/plain is up to you to decide
